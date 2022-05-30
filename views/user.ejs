@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сайтик</title>
+    <%- include('layouts/head') -%>
+  </head>
+  <body id="body">
+    <div class="container">
+      <%- include('layouts/header') -%>
+
+      <div class="content">
+            
+            <div class="userbox">
+              <img src="./images/pat-anime.gif" alt="" srcset="" />
+              <div class="userbox-text"><p style="font-size: 32px; color: black; text-align: center;"><%= user.username %></p></div>
+            </div>
+            <p>ID пользователя: <%= user.id %></pз>
+            <p>Роль: 
+                <% if (user.role == "ADMIN") {%>
+                Администратор
+                <% } else { %> 
+                Пользователь
+                <% } %> 
+            </p>
+        </div>
+
+      <%- include('layouts/footer') -%>
+    </div>
+  </body>
+</html>

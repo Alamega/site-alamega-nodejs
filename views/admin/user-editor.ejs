@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сайтик</title>
+    <%- include('../layouts/head') -%>
+  </head>
+  <body id="body">
+    <div class="container">
+      <%- include('../layouts/header') -%>
+
+      <div class="content">
+        <p>Список юзеров:</p>
+        <% for(let i = 0; i < users.length; i++) { %>
+        <div class="box_wrapper">
+          <span>ID: <a href="/user-page?userId=<%= users[i].id%>" style="margin: 0"><%= users[i].id %></a></span>
+          <span>Никнейм: <%= users[i].username%> </span>
+          <span>Роль: <%= users[i].role%></span>
+        </div>
+        <% } %>
+      </div>
+
+      <%- include('../layouts/footer') -%>
+    </div>
+  </body>
+</html>

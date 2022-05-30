@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вход</title>
+    <%- include('../layouts/head') -%>
+  </head>
+  <body id="body">
+    <div class="container">
+      <%- include('../layouts/header') -%>
+
+      <div class="content">
+        <h1 style="text-align: center; margin: 4px">Вход</h1>
+        <form class="form_center" action="/login" method="post">
+          <label for="username">Никнейм</label>
+          <input type="text" name="username" id="username" />
+          <label for="password">Пароль</label>
+          <input type="password" name="password" id="password" />
+          <button class="button">Войти</button>
+        </form>
+
+        <% for (let i = 0; i < msg.length; i++) { %>
+        <p style="color: red"><%= msg[i] %></p>
+        <% }; %>
+      </div>
+
+      <%- include('../layouts/footer') -%>
+    </div>
+  </body>
+</html>

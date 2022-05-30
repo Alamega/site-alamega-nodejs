@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сайтик</title>
+    <%- include('layouts/head') -%>
+  </head>
+  <body id="body">
+    <div class="container">
+      <%- include('layouts/header') -%>
+
+      <div class="content">
+        <div id="clock">Где я потерял свои часы?</div>
+        <script src="./scripts/clock.js"></script>
+
+        <% if(!user) {%>
+        <div class="userbox">
+          <img src="./images/ara-anime.gif" alt="" srcset="" />
+          <div class="userbox-text">Еще не зарегался?</div>
+        </div>
+        <% } %>
+
+        <div class="authbar">
+          <% if (user) { %>
+          <span>Здравствуйте,<a href="/user?userId=<%= user.id %>"><%= user.username %></a></span>
+          <a style="margin-left: auto" href="/logout">Выход</a>
+          <% } else {%>
+          <a href="./login.html">Логин</a>
+          <a href="./registration.html">Регистрация</a>
+          <% } %>
+        </div>
+        <% if (user && (user.role=='ADMIN')) { %>
+        <button class="button" onclick="window.location.href = './admin.html'">Админка</button>
+        <% } %>
+        <a href="./hello.html">Привет.js</a>
+        <a href="./RSA.html">RSA.js</a>
+        <a href="./GAME.html">GAME.js</a>
+      </div>
+
+      <%- include('layouts/footer') -%>
+    </div>
+  </body>
+</html>

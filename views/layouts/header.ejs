@@ -1,0 +1,49 @@
+<header>
+  <div class="logo-wrapper">
+    <img src="./images/icon.png" alt="Лого">
+    <a href="./">Alamega</a>
+  </div>
+  <div class="navbar" id="navbar">
+    <button id="navbar_btn"></button>
+    <div class="navbar_menu" id="navbar_menu">
+      <a href='./hello.html'>Привет.js</a>
+      <a href='./RSA.html'>RSA.js</a>
+      <a href='./GAME.html'>GAME.js</a>
+    </div>
+
+    <script>
+      var user;
+      const menu = document.getElementById("navbar_menu");
+      const navbar = document.getElementById("navbar");
+      const btn = document.getElementById("navbar_btn");
+      menu.style.display = "none";
+      btn.addEventListener("click", () => {
+        if (menu.style.display) {
+          navbar.style.boxShadow = "0 0 4px black";
+          menu.style.display = "";
+        } else {
+          navbar.style.boxShadow = "";
+          menu.style.display = "none";
+        }
+      });
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", "/getCurrentUser");
+      xhr.send();
+      xhr.onload = function () {
+        if (xhr.status == 200) {
+          if (xhr.response != "") {
+            user = JSON.parse(xhr.response);
+            document.getElementById("navbar_menu").insertAdjacentHTML("afterbegin", "<a href=\"/user?userId=" + user.id + "\">" + user.username + "</a>");
+            document.getElementById("navbar_menu").insertAdjacentHTML("beforeend", '<a href="/logout">Выход</a>');
+          } else {
+            document.getElementById("navbar_menu").insertAdjacentHTML("afterbegin", '<a href="/registration.html">Регистрация</a>');
+            document.getElementById("navbar_menu").insertAdjacentHTML("afterbegin", '<a href="/login.html">Вход</a>');
+          }
+        } else {
+          console.log("Ошибка получения данных сервера");
+        }
+      };  
+        
+    </script>
+</header>
