@@ -1,4 +1,4 @@
-const authController = require("../controllers/authController");
+const authController = require("../controllers/auth.controller");
 
 module.exports = async function (req, res, next) {
   const user = await authController.getUserByToken(req);

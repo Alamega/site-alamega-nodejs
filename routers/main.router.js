@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const authController = require("../controllers/authController");
+const authController = require("../controllers/auth.controller");
 const userRepo = require("../resources/users/user.memory.repository");
 
 async function setAdmin(username) {

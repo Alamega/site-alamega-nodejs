@@ -15,13 +15,6 @@
         <div id="clock">Где я потерял свои часы?</div>
         <script src="./scripts/clock.js"></script>
 
-        <% if(!user) {%>
-        <div class="userbox">
-          <img src="./images/ara-anime.gif" alt="" srcset="" />
-          <div class="userbox-text">Еще не зарегался?</div>
-        </div>
-        <% } %>
-
         <div class="authbar">
           <% if (user) { %>
           <span>Здравствуйте,<a href="/user?userId=<%= user.id %>"><%= user.username %></a></span>

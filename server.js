@@ -7,8 +7,6 @@ const mainRouter = require("./routers/main.router");
 const authRouter = require("./routers/auth.router");
 const adminRouter = require("./routers/admin.router");
 
-const PORT = process.env.PORT || 5000;
-
 const app = express();
 
 app.use(express.json());
@@ -22,11 +20,7 @@ app.use("/", adminRouter);
 app.use("/api", userRouter);
 
 app.use(function (req, res) {
-  res.status(404);
-  if (req.accepts("html")) {
-    res.render("error/404TiKuDaPoLeZ.ejs", { url: req.url });
-    return;
-  }
+  res.render("error/404.ejs");
 });
 
-app.listen(PORT);
+app.listen(process.env.PORT || 5000);

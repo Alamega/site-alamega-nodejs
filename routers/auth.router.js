@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const authController = require("../controllers/authController");
+const authController = require("../controllers/auth.controller");
 
 router.get("/registration.html", async (req, res) => {
   res.render("auth/registration.ejs", { msg: { messages: [] } });

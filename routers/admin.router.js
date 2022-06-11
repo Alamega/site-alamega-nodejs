@@ -17,7 +17,7 @@ router.get("/user-page", adminMiddleware, async (req, res) => {
   res.render("admin/user-page.ejs", { user: user });
 });
 
-router.post("/changeRole", async (req, res) => {
+router.post("/changeRole", adminMiddleware, async (req, res) => {
   const user = await userRepo.getUser(req.body.userId);
   await userRepo.updateUser(user.id, user.username, user.password, req.body.role);
   res.redirect("/user-page?userId=" + user.id);

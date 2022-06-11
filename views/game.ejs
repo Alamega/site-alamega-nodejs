@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Игра? Игра</title>
+    <title>Всё</title>
     <%- include('layouts/head') -%>
   </head>
   <body id="body">
@@ -12,29 +12,19 @@
       <%- include('layouts/header') -%>
 
       <style>
+        * {
+          user-select: none;
+        }
         canvas {
           background: rgba(255, 255, 255, 1);
           box-shadow: 0 0 2px black;
+          width: 100%;
+          cursor: none;
         }
       </style>
 
-      <script>
-        function update() {
-          if (document.documentElement.scrollWidth > 800) {
-            document.getElementById("game_info").innerHTML = "Зачем?";
-            document.getElementById("game").style.display = "";
-          } else {
-            document.getElementById("game_info").innerHTML = "Эта штука не для маленьких экранов.";
-            document.getElementById("game").style.display = "none";
-          }
-        }
-        window.addEventListener("resize", update);
-        window.onload = update;
-      </script>
-
       <div class="content">
-        <p id="game_info"></p>
-        <canvas class="game" id="game" width="720" height="480" style="display: none"></canvas>
+        <canvas class="game" id="game"></canvas>
         <script src="./scripts/game.js"></script>
       </div>
 
