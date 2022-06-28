@@ -38,7 +38,7 @@ router.get("/getCurrentUser", async (req, res) => {
   if (user) {
     res.send(user);
   } else {
-    res.send(null);
+    res.send({ error: "Пользователь не авторизирован." });
   }
 });
 
