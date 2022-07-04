@@ -2,6 +2,8 @@ const router = require("express").Router();
 const userRepo = require("../resources/users/user.memory.repository");
 const adminMiddleware = require("../middlewares/adminMiddleware");
 
+const path = require("path");
+
 router.get(["/admin.html", "admin"], adminMiddleware, async (req, res) => {
   res.render("admin/admin-panel.ejs");
 });
@@ -31,6 +33,20 @@ router.post("/addUser", adminMiddleware, async (req, res) => {
 router.post("/deleteUser", adminMiddleware, async (req, res) => {
   await userRepo.deleteUser(req.body.id);
   res.redirect("/user-editor");
+});
+
+router.get("/files.html", adminMiddleware, async (req, res) => {
+  res.render("files.ejs", { msg: "" });
+});
+
+router.post("/upload", adminMiddleware, (req, res) => {
+  if (!req.files || Object.keys(req.files).length === 0) {
+    res.redirect("files.html");
+  } else {
+    req.files.sampleFile.mv(path.join(__dirname, "../") + "/files/" + req.files.sampleFile.name, () => {
+      res.render("files.ejs", { msg: "Файл загружен" });
+    });
+  }
 });
 
 module.exports = router;
